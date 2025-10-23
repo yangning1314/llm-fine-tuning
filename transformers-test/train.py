@@ -1,4 +1,4 @@
-from datasets import load_dataset
+from datasets import load_from_disk
 from transformers import AutoTokenizer, DataCollatorWithPadding
 '''
 导入数据集
@@ -66,6 +66,7 @@ preds = np.argmax(predictions.predictions, axis=-1)
 
 metric = evaluate.load("glue", "mrpc")
 metric.compute(predictions=preds, references=predictions.label_ids)
+
 
 
 
