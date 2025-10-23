@@ -3,8 +3,8 @@ from transformers import AutoTokenizer, DataCollatorWithPadding
 '''
 导入数据集
 '''
-raw_datasets = load_dataset("glue", "mrpc")
-checkpoint = "bert-base-uncased"
+raw_datasets = load_from_disk("data")
+checkpoint = "directory_on_my_computer"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
 '''
@@ -66,5 +66,6 @@ preds = np.argmax(predictions.predictions, axis=-1)
 
 metric = evaluate.load("glue", "mrpc")
 metric.compute(predictions=preds, references=predictions.label_ids)
+
 
 
